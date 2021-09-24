@@ -8,11 +8,12 @@ import Loader from './Loader';
 
 
 const Cryptocurrencies = ({ simplified }) => {
+	const { data, cryptoList, isFetching } = useGetCryptosQuery();
+	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 
 	return (
-    <div>
-
-    </div>
+    <>
+		</>
 
 	)
 }

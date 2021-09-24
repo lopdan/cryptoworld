@@ -72,3 +72,17 @@ a:hover{
     padding: 20px;
     align-items: center;
 }
+.home-heading-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+
+.home-title{
+    font-size: 1.4rem !important;
+}
+.show-more{
+    font-size: 1.3rem !important;
+}
