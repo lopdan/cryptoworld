@@ -11,6 +11,7 @@ const Cryptocurrencies = ({ simplified }) => {
 	const { data: cryptoList, isFetching } = useGetCryptosQuery();
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 
+	console.log(cryptos);
 	if(isFetching) return <Loader/>
 
 	return (
@@ -24,16 +25,17 @@ const Cryptocurrencies = ({ simplified }) => {
 								extra={<img className="crypto-image" src={currency.iconUrl} />}
 								hoverable
 								>
-									<p>Price: {millify(currency.price)}</p>
-									<p>Market Cap: {millify(currency.marketCap)}</p>
-									<p>Daily Change: {millify(currency.change)}%</p>
+									<p>Price: ${millify(currency.price)}</p>
+									<p>Market Cap: ${millify(currency.marketCap)}</p>
+									<p>Volume (24h): ${millify(currency.volume)}</p>
+									<p>Change (24h): {millify(currency.change)}%</p>
 							</Card>
 						</Link>
 					</Col>
 				)}
 			</Row>
 		</>
-
+		
 	)
 }
 export default Cryptocurrencies;
