@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
-
 import { useGetCryptosQuery } from '../api/cryptoApi';
 import Loader from './Loader';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 
 const Cryptocurrencies = ({ simplified }) => {
@@ -16,24 +22,39 @@ const Cryptocurrencies = ({ simplified }) => {
 
 	return (
     <>
-			<Row gutters={[32,32]} className="crypto-container">
+			<TableContainer component={Paper}>
+			<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Rank</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Price</TableCell>
+            <TableCell>24h %</TableCell>
+            <TableCell>Market Cap</TableCell>
+						<TableCell>Volume</TableCell>
+						<TableCell>Total Supply</TableCell>
+          </TableRow>
+        </TableHead>
+			<TableBody>	
 				{cryptos.map((currency) =>
-					<Col xd={24} sm={12} lg={6} className="crypto-card">
-						<Link to={`crypto/${currency.id}`}>
-							<Card
-								title={`${currency.rank}. ${currency.name}`}
-								extra={<img className="crypto-image" src={currency.iconUrl} />}
-								hoverable
-								>
-									<p>Price: ${millify(currency.price)}</p>
-									<p>Market Cap: ${millify(currency.marketCap)}</p>
-									<p>Volume (24h): ${millify(currency.volume)}</p>
-									<p>Change (24h): {millify(currency.change)}%</p>
-							</Card>
-						</Link>
-					</Col>
+				 	<TableRow
+				 	key={cryptos.name}
+				 	sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+			 		>
+				 	<TableCell component="th" scope="row">
+					 {currency.rank}
+				 	</TableCell>
+					<TableCell><Link to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
+					<TableCell>${millify(currency.price)}</TableCell>
+					<TableCell style={{color: currency.change > 0? "green": "red"}}>{currency.change}</TableCell>
+					<TableCell>${millify(currency.marketCap)}</TableCell>
+					<TableCell>${millify(currency.volume)}</TableCell>
+					<TableCell>{currency.totalSupply? millify(currency.totalSupply): "-"}</TableCell>
+					</TableRow>
 				)}
-			</Row>
+			</TableBody>
+			</Table>
+			</TableContainer>
 		</>
 		
 	)

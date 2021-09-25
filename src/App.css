@@ -25,7 +25,7 @@ a:hover{
 }
 
 .navbar{
-    background-color: #2c003b;
+    background-color: #9ec2ff;
     flex-direction: row;
 }
 
@@ -34,7 +34,6 @@ a:hover{
 }   
 
 .logo-container{
-    background-color: #2c003b;
     display: flex;
     padding: 20px;
     align-items: center;
@@ -43,12 +42,15 @@ a:hover{
 }
 
 .menu-container{
-    background-color: #2c003b !important;
+    background-color: #9ec2ff !important;
     display: flex;
     padding: 20px;
     flex-direction: row;
 }
 
+.ant-menu-item-active {
+    background-color: #0071bd !important;
+}
 
 .ant-menu > .ant-menu-item:hover,
 .ant-menu > .ant-menu-submenu:hover,
@@ -62,7 +64,9 @@ a:hover{
   border-bottom: 2px solid #EEBC1D;
   background-color: #2c003b !important;
 }
-
+.ant-menu-vertical {
+    border-right: none !important;
+}
 
 .footer {
     background-color: #2c003b;
