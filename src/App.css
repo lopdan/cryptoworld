@@ -86,3 +86,14 @@ a:hover{
 .show-more{
     font-size: 1.3rem !important;
 }
+
+
+.crypto-container{
+    min-height: 65vh !important;
+}
+.crypto-card{
+    min-width: 250px;
+}
+.crypto-card .crypto-image{
+    width:35px;
+}
