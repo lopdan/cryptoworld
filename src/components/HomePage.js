@@ -2,7 +2,6 @@ import React from 'react';
 import millify from 'millify';
 import { Typography, Row, Col, Statistic } from 'antd';
 import { Link } from 'react-router-dom';
-
 import { useGetCryptosQuery } from '../api/cryptoApi';
 import { Cryptocurrencies } from '../components';
 import Loader from './Loader';
@@ -36,7 +35,6 @@ const HomePage = () => {
 				<Title level={2} className="home-title">Latest news</Title>
 				<Title level={3} className="show-more"><Link to="/news">Show more</Link></Title>	
 			</div>
-			
 		</>
 	)
 }
