@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Input } from 'antd';
+import { Typography } from 'antd';
 import { useGetCryptosQuery, useGetCryptoHistoryQuery } from '../api/cryptoApi';
 
 import Loader from './Loader';
@@ -13,6 +13,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+const { Title } = Typography;
 
 const Cryptocurrencies = ({ simplified }) => {
 	const amount = simplified ? 20 : 100;
@@ -26,6 +27,8 @@ const Cryptocurrencies = ({ simplified }) => {
 
 	return (
     <>
+			<div className="crypto-table-container">
+			<Title level={2} className="heading">Top Cryptocurrencies</Title>
 			<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
@@ -40,7 +43,7 @@ const Cryptocurrencies = ({ simplified }) => {
           </TableRow>
         </TableHead>
 			<TableBody>	
-				{cryptos.map((currency) =>
+				{cryptos?.map((currency) =>
 				 	<TableRow
 				 	key={cryptos.name}
 				 	sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -59,6 +62,7 @@ const Cryptocurrencies = ({ simplified }) => {
 			</TableBody>
 			</Table>
 			</TableContainer>
+			</div>
 		</>
 	)
 }
