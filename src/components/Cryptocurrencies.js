@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
-import { useGetCryptosQuery } from '../api/cryptoApi';
+import { useGetCryptosQuery, useGetCryptoHistoryQuery } from '../api/cryptoApi';
+
 import Loader from './Loader';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,8 +15,11 @@ import Paper from '@mui/material/Paper';
 
 
 const Cryptocurrencies = ({ simplified }) => {
-	const { data: cryptoList, isFetching } = useGetCryptosQuery();
+	const amount = simplified ? 20 : 100;
+	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
+
+	//const { data: coinHistory, isLoading } = useGetCryptosQuery(1,6);
 
 	console.log(cryptos);
 	if(isFetching) return <Loader/>
@@ -56,7 +60,6 @@ const Cryptocurrencies = ({ simplified }) => {
 			</Table>
 			</TableContainer>
 		</>
-		
 	)
 }
 export default Cryptocurrencies;
