@@ -105,15 +105,6 @@ a:hover{
     padding-bottom: 10px;
 }
 
-.crypto-container{
-    min-height: 65vh !important;
-}
-.crypto-card{
-    min-width: 250px;
-}
-.crypto-card .crypto-image{
-    width:35px;
-}
 
 /** NEWS */
 
@@ -137,4 +128,32 @@ a:hover{
 
 .news-provider{
     margin-left: 10px;
+}
+
+/** NEWS NOT SIMPLIFIED */
+
+.news-card-big{
+    min-height: 300px !important;
+}
+
+.news-image-container-big{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.news-title-big{
+    width: 65%;
+}
+
+.news-container-big{
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-provider-big{
+    margin-left: 10px;
+}
+
+.new-card-menu{
+    padding: 10%;
 }
