@@ -29,7 +29,7 @@ const CoinData = () => {
     { title: 'Rank', value: cryptoDetails.rank, icon: <NumberOutlined /> },
     { title: '24h Volume', value: `$ ${cryptoDetails.volume && millify(cryptoDetails.volume)}`, icon: <ThunderboltOutlined /> },
     { title: 'Market Cap', value: `$ ${cryptoDetails.marketCap && millify(cryptoDetails.marketCap)}`, icon: <DollarCircleOutlined /> },
-    { title: 'All-time-high(daily avg.)', value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`, icon: <TrophyOutlined /> },
+    { title: 'All-time-high (daily avg.)', value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`, icon: <TrophyOutlined /> },
   ];
 
   const genericStats = [
@@ -55,6 +55,21 @@ const CoinData = () => {
             <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
           </Col>
           {stats.map(({ icon, title, value }) => (
+            <Col className="coin-stats">
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))}
+        </Col>
+        <Col>
+          <Col className="coin-value-statistics-heading">
+            <Title level={3} className="coin-details-heading">Other Stats Info</Title>
+            <p>An overview showing the statistics of {cryptoDetails.name}, such as the number of availiable exchanges, total supply, and circulating supply.</p>
+          </Col>
+          {genericStats.map(({ icon, title, value }) => (
             <Col className="coin-stats">
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
