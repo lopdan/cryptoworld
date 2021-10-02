@@ -1,4 +1,3 @@
-export { default as NavigationBar} from './NavigationBar';
 export { default as NavBar } from './NavBar/NavBar';
 export { default as Loader} from './Loader';
 export { default as HomePage} from './HomePage';

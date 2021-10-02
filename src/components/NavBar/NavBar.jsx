@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
-import { MenuItems } from "./MenuItems"
-import { Typography, Avatar } from 'antd';
+import React from 'react';
+import { Avatar } from 'antd';
 
 import './NavBar.css'
 
 
-const { Title } = Typography;
-
 
 const NavBar = () => {
-    const [click, handleClick] = useState({
-        clicked: true
-    },[])
     return(
-        
-
         <div className="NavbarItems">
             <div className="navbar-logo">
                 <Avatar src="./bitcoin-mind.png" size="large"/>

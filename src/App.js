@@ -6,13 +6,11 @@ import { HomePage, Cryptocurrencies, NewsPage, NavBar } from './components';
 import './App.css';
 import 'antd/dist/antd.css';
 
-
-//9300C5 			<NavBar/>
 const App = () => {
 	return (
 		<div className="app">
 			<div>
-			<NavBar/>
+				<NavBar/>
 			</div>
 			<div className="main">
 				<Layout>
