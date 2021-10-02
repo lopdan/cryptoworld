@@ -63,3 +63,71 @@
 .stats {
     font-weight: 700;
 }
+
+
+.coin-desc-link {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 20px;
+  
+    h2 {
+      font-weight: 700;
+      color: var(--pink);
+    }
+  
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+  
+    a {
+      color: var(--pink);
+    }
+  
+    h3 {
+      font-weight: 700;
+    }
+}
+  
+.coin-desc {
+    flex: 0.5;
+}
+
+.coin-links {
+    padding: 0px 20px;
+    flex: 0.5;
+}
+  
+.coin-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+}
+  
+.link-name {
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+  
+.coin-link {
+    a {
+      color: var(--pink);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+  
+    &:hover {
+      background-color: var(--bgSecondary);
+    }
+}
+  
+.coin-stats:hover {
+    background-color: var(--bgSecondary);
+}
+
+.coin-detail-container {
+    margin: 70px;
+}

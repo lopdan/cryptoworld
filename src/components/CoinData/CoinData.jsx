@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import HTMLReactParser from 'html-react-parser';
 import millify from 'millify';
 import { Col, Row, Typography, Select } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
@@ -11,6 +12,7 @@ import Loader from './../Loader';
 
 
 const { Title, Text } = Typography;
+const { Option } = Select;
 
 const CoinData = () => {
   const { coinId } = useParams();
@@ -19,6 +21,8 @@ const CoinData = () => {
   const cryptoDetails = data?.data?.coin;
 
 	console.log(data)
+
+  //console.log(cryptoDetails.description);
 
   if (isFetching) return <Loader />;
 
@@ -41,13 +45,16 @@ const CoinData = () => {
   ];
 
   return (
-    <Col>
+    <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
           {data?.data?.coin.name} ({data?.data?.coin.slug}) Price
         </Title>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </Col>
+      <Select defaultValue="7d" className="select-timeperiod" placeholder="Select Timeperiod" onChange={(value) => setTimeperiod(value)}>
+        {time.map((date) => <Option key={date}>{date}</Option>)}
+      </Select>
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
@@ -64,7 +71,7 @@ const CoinData = () => {
             </Col>
           ))}
         </Col>
-        <Col>
+        <Col className="other-stats-info">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">Other Stats Info</Title>
             <p>An overview showing the statistics of {cryptoDetails.name}, such as the number of availiable exchanges, total supply, and circulating supply.</p>
@@ -77,6 +84,21 @@ const CoinData = () => {
               </Col>
               <Text className="stats">{value}</Text>
             </Col>
+          ))}
+        </Col>
+      </Col>
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title level={3} className="coin-details-heading">What is {cryptoDetails.name}?</Title>
+          {HTMLReactParser(cryptoDetails.description)}
+        </Row>
+        <Col className="coin-links">
+          <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
+          {cryptoDetails.links?.map((link) => (
+            <Row className="coin-link" key={link.name}>
+              <Title level={5} className="link-name">{link.type}</Title>
+              <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+            </Row>
           ))}
         </Col>
       </Col>
