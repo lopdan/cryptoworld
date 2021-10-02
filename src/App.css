@@ -48,28 +48,8 @@ a:hover{
     flex-direction: row;
 }
 
-.ant-menu-item-active {
-    background-color: #0071bd !important;
-}
-
-.ant-menu > .ant-menu-item:hover,
-.ant-menu > .ant-menu-submenu:hover,
-.ant-menu > .ant-menu-item-active,
-.ant-menu> .ant-menu-submenu-active,
-.ant-menu > .ant-menu-item-open,
-.ant-menu> .ant-menu-submenu-open,
-.ant-menu > .ant-menu-item-selected,
-.ant-menu > .ant-menu-submenu-selected {
-  color: #EEBC1D;
-  border-bottom: 2px solid #EEBC1D;
-  background-color: #2c003b !important;
-}
-.ant-menu-vertical {
-    border-right: none !important;
-}
-
 .footer {
-    background-color: #2c003b;
+    background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252,1) 100%);
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -92,6 +72,23 @@ a:hover{
 .show-more{
     font-size: 1.3rem !important;
 }
+@media screen and (max-width:1300px){
+}
+/** SCROLL BAR **/
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+  
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+
 
 /** Cryptocurrencies */
 .crypto-table-container{

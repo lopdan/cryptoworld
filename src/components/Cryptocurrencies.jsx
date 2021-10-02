@@ -53,7 +53,7 @@ const Cryptocurrencies = ({ simplified }) => {
 				 	</TableCell>
 					<TableCell><Link to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
 					<TableCell>${millify(currency.price)}</TableCell>
-					<TableCell style={{color: currency.change > 0? "green": "red"}}>{currency.change}</TableCell>
+					<TableCell style={{color: currency.change > 0? "green": "red"}}>{currency.change + "%"}</TableCell>
 					<TableCell>${millify(currency.marketCap)}</TableCell>
 					<TableCell>${millify(currency.volume)}</TableCell>
 					<TableCell>{currency.totalSupply? millify(currency.totalSupply): "-"}</TableCell>

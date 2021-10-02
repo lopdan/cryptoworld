@@ -2,17 +2,17 @@ import React from 'react'
 import { Switch, Route, Link} from 'react-router-dom';
 import { Layout, Typography, Space} from 'antd';
 
-import { NavigationBar, HomePage, Cryptocurrencies, NewsPage } from './components';
+import { HomePage, Cryptocurrencies, NewsPage, NavBar } from './components';
 import './App.css';
 import 'antd/dist/antd.css';
 
 
-//9300C5
+//9300C5 			<NavBar/>
 const App = () => {
 	return (
 		<div className="app">
-			<div className="navbar">
-				<NavigationBar />
+			<div>
+			<NavBar/>
 			</div>
 			<div className="main">
 				<Layout>
