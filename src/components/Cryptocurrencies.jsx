@@ -21,9 +21,15 @@ const Cryptocurrencies = ({ simplified }) => {
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 
 	//const { data: coinHistory, isLoading } = useGetCryptosQuery(1,6);
+	useEffect(() => {
+		if(cryptoList != null){
+			setCryptos(cryptoList?.data?.coins)
+		}
+	},[cryptoList])
 
 	console.log(cryptos);
 	if(isFetching) return <Loader/>
+
 
 	return (
     <>
