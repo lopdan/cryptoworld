@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Link} from 'react-router-dom';
 import { Layout, Typography, Space} from 'antd';
 
-import { HomePage, Cryptocurrencies, NewsPage, NavBar } from './components';
+import { HomePage, Cryptocurrencies, NewsPage, NavBar, CoinData } from './components';
 import './App.css';
 import 'antd/dist/antd.css';
 
@@ -23,6 +23,9 @@ const App = () => {
 							</Route>
 							<Route exact path="/cryptocurrencies">
 								<Cryptocurrencies simplified={false}/>
+							</Route>
+							<Route exact path="/crypto/:coinId">
+								<CoinData/>
 							</Route>
 							<Route exact path="/news">
 								<NewsPage />

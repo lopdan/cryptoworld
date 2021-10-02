@@ -57,7 +57,7 @@ const Cryptocurrencies = ({ simplified }) => {
 				 	<TableCell component="th" scope="row">
 					 {currency.rank}
 				 	</TableCell>
-					<TableCell><Link to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
+					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
 					<TableCell>${millify(currency.price)}</TableCell>
 					<TableCell style={{color: currency.change > 0? "green": "red"}}>{currency.change + "%"}</TableCell>
 					<TableCell>${millify(currency.marketCap)}</TableCell>
