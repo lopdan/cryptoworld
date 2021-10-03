@@ -32,11 +32,8 @@ const NewsPage = () => {
                     <img src={news?.image?.thumbnail?.contentUrl || noImage} alt="" />
                   </div>
                   <div className={styles.news_container}>
-                    <div className={styles.new_providre_data}>
-                      <div style={{display: 'flex', flexDirection: 'row', paddingRight: '10px'}}>                      
-                        <Text className={styles.news_provider}>{news.provider[0]?.name}</Text>
-                        <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || noImage} alt="" />
-                      </div>
+                    <div className={styles.new_providre_data}>                     
+                      <Text className={styles.news_provider} style={{marginLeft: 0}}>{news.provider[0]?.name}</Text>
                       <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
                     </div>
                     <Title className={styles.news_title} level={4}>{news.name}</Title>
