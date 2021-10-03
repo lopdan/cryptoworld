@@ -5,3 +5,4 @@ export { default as Cryptocurrencies } from './Cryptocurrencies';
 export { default as News } from './News/News';
 export { default as NewsPage } from './News/NewsPage';
 export { default as CoinData } from './CoinData/CoinData';
+export { default as Chart } from './Chart/Chart'; 

@@ -7,8 +7,9 @@ import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCi
 
 import './CoinData.scss';
 
-import { useGetCoinDataQuery } from '../../api/cryptoApi';
+import { useGetCoinDataQuery, useGetCryptoHistoryQuery } from '../../api/cryptoApi';
 import Loader from './../Loader';
+import Chart from './../Chart/Chart';
 
 
 const { Title, Text } = Typography;
@@ -16,17 +17,16 @@ const { Option } = Select;
 
 const CoinData = () => {
   const { coinId } = useParams();
-  const [ timeperiod, setTimeperiod ] = useState('7d');
+  const [timeperiod, setTimeperiod] = useState('7d');
   const { data, isFetching } = useGetCoinDataQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
   const cryptoDetails = data?.data?.coin;
 
 	console.log(data)
 
-  //console.log(cryptoDetails.description);
-
   if (isFetching) return <Loader />;
 
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  const time = ['24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
   const stats = [
     { title: 'Price (USD)', value: `$ ${cryptoDetails.price && millify(cryptoDetails.price)}`, icon: <DollarCircleOutlined /> },
@@ -48,13 +48,14 @@ const CoinData = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
-          {data?.data?.coin.name} ({data?.data?.coin.slug}) Price
+          {data?.data?.coin.name} ({data?.data?.coin.symbol}) Price
         </Title>
-        <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
+        <p>{cryptoDetails.name} price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </Col>
       <Select defaultValue="7d" className="select-timeperiod" placeholder="Select Timeperiod" onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
+      <Chart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name} />
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">

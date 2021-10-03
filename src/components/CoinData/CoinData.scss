@@ -1,3 +1,14 @@
+:root {
+  --text-primary:#000;
+  --bgPrimary:#fff;
+  --bgSecondary:#F9F9F9;
+  --pink:#0071bd;
+  --navbar: #6e5efe;
+  --light-blue:#e6f7ff;
+  --border:#d9d9d9;
+}
+
+
 .coin-heading-container {
     display: flex;
     justify-content: center;
@@ -10,7 +21,7 @@
   
     .coin-name {
       font-weight: 800;
-      color: var(--pink);
+      color: var(--navbar);
     }
   
     p {
@@ -42,7 +53,7 @@
 .coin-details-heading {
     font-weight: 700 !important;
     margin-top: 20px !important;
-    color: var(--pink) !important;
+    color: var(--navbar) !important;
 }
   
 .coin-stats {
@@ -114,7 +125,7 @@
   
 .coin-link {
     a {
-      color: var(--pink);
+      color: var(--navbar);
       font-weight: 700;
       font-size: 1rem;
     }
@@ -130,4 +141,10 @@
 
 .coin-detail-container {
     margin: 70px;
+}
+
+.select-timeperiod{
+  width: 200px !important;
+  margin-top: 20px !important;
+  align-content: flex-end;
 }
