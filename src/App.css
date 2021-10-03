@@ -60,7 +60,7 @@ a:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 10px;
     flex-direction: column;
     padding-left: 10%;
     padding-right: 10%;
@@ -71,6 +71,7 @@ a:hover{
 }
 .show-more{
     font-size: 1.3rem !important;
+    padding-top: 20px;
 }
 @media screen and (max-width:1300px){
 }

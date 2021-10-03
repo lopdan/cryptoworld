@@ -34,7 +34,7 @@ const Cryptocurrencies = ({ simplified }) => {
 	return (
     <>
 			<div className="crypto-table-container">
-			<Title level={2} className="heading">Top Cryptocurrencies</Title>
+			<Title level={2} style={{color: '#6e5efe'}}>Top Cryptocurrencies</Title>
 			<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
