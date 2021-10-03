@@ -6,16 +6,16 @@
     border-bottom: 1px solid var(--border);
     padding-top: 20px;
     padding-bottom: 20px;
-    gap: 10px;
+    gap: 12px;
   
     .coin-name {
-      font-weight: 900;
+      font-weight: 800;
       color: var(--pink);
     }
   
     p {
       font-size: 1rem;
-      opacity: 0.9;
+      opacity: 0.8;
       margin-bottom: 20px;
     }
 }
@@ -68,17 +68,17 @@
 .coin-desc-link {
     display: flex;
     gap: 40px;
-    margin-top: 40px;
+    margin-top: 45px;
     padding-top: 20px;
   
     h2 {
-      font-weight: 700;
+      font-weight: 600;
       color: var(--pink);
     }
   
     p {
       font-size: 1rem;
-      opacity: 0.9;
+      opacity: 0.85;
     }
   
     a {
@@ -95,7 +95,7 @@
 }
 
 .coin-links {
-    padding: 0px 20px;
+    padding: 0px 25px;
     flex: 0.5;
 }
   
