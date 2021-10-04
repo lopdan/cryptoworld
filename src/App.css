@@ -56,23 +56,6 @@ a:hover{
     padding: 20px;
     align-items: center;
 }
-.home-heading-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    flex-direction: column;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.home-title{
-    font-size: 1.4rem !important;
-}
-.show-more{
-    font-size: 1.3rem !important;
-    padding-top: 20px;
-}
 @media screen and (max-width:1300px){
 }
 /** SCROLL BAR **/
@@ -88,15 +71,3 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: #6e5efe;
 }
-
-.crypto-table-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 10px;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 10px;
-}
-
