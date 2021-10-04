@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.css'
+import './NavBar.scss'
 
 var image = require('../../images/bitcoin-mind.png').default;
 
