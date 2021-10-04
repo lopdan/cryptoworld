@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
-import { useGetCryptosQuery } from '../../api/cryptoApi';
+import { useGetCryptosQuery, useGetCryptoHistoryQuery } from '../../api/cryptoApi';
 
 import Loader from '../Loader';
 import Table from '@mui/material/Table';
@@ -22,6 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
 	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 
+	//const { data: coinHistory, isLoading } = useGetCryptosQuery(1,6);
 	useEffect(() => {
 		if(cryptoList != null){
 			setCryptos(cryptoList?.data?.coins)
@@ -35,8 +36,8 @@ const Cryptocurrencies = ({ simplified }) => {
 	return (
     <>
 			<div className="crypto-table-container">
-			<Title level={2} style={{color: '#6e5efe'}}>Top Cryptocurrencies</Title>
-			<TableContainer component={Paper}>
+			<Title level={2}>Top Cryptocurrencies</Title>
+			<TableContainer component={Paper} style={{backgroundColor: '#F8F8FF'}}>
 			<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -58,8 +59,8 @@ const Cryptocurrencies = ({ simplified }) => {
 				 	<TableCell component="th" scope="row">
 					 {currency.rank}
 				 	</TableCell>
-					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
-					<TableCell>${millify(currency.price)}</TableCell>
+					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
+					<TableCell style={{color: currency.change > 0? "green": "red"}}>${parseFloat(currency.price).toFixed(2)}</TableCell>
 					<TableCell style={{color: currency.change > 0? "green": "red"}}>{currency.change + "%"}</TableCell>
 					<TableCell>${millify(currency.marketCap)}</TableCell>
 					<TableCell>${millify(currency.volume)}</TableCell>

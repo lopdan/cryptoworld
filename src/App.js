@@ -14,7 +14,7 @@ const App = () => {
 			</div>
 			<div className="main">
 				<Layout>
-					<div className="routes">
+					<div className="routes" style={{background: '#E6E6FA'}}>
 						<Switch>
 							<Route exact path="/">
 								<HomePage />
