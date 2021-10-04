@@ -89,9 +89,6 @@ body::-webkit-scrollbar-thumb {
     background: #6e5efe;
 }
 
-
-
-/** Cryptocurrencies */
 .crypto-table-container{
     display: flex;
     justify-content: space-between;
@@ -102,3 +99,4 @@ body::-webkit-scrollbar-thumb {
     padding-right: 10%;
     padding-bottom: 10px;
 }
+
