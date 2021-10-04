@@ -37,17 +37,17 @@ const Cryptocurrencies = ({ simplified }) => {
     <>
 			<div className="crypto-table-container">
 			<Title level={2}>Top Cryptocurrencies</Title>
-			<TableContainer component={Paper} style={{backgroundColor: '#F8F8FF'}}>
+			<TableContainer component={Paper} style={{backgroundColor: '#F6F6F6'}}>
 			<Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Rank</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Price</TableCell>
-            <TableCell>24h %</TableCell>
-            <TableCell>Market Cap</TableCell>
-						<TableCell>Volume</TableCell>
-						<TableCell>Total Supply</TableCell>
+            <TableCell style={{fontWeight: 900}}>Rank</TableCell>
+            <TableCell style={{fontWeight: 900}}>Name</TableCell>
+            <TableCell style={{fontWeight: 900}}>Price</TableCell>
+            <TableCell style={{fontWeight: 900}}>24h %</TableCell>
+            <TableCell style={{fontWeight: 900}}>Market Cap</TableCell>
+						<TableCell style={{fontWeight: 900}}>Volume</TableCell>
+						<TableCell style={{fontWeight: 900}}>Total Supply</TableCell>
           </TableRow>
         </TableHead>
 			<TableBody>	
@@ -56,15 +56,15 @@ const Cryptocurrencies = ({ simplified }) => {
 				 	key={cryptos.name}
 				 	sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 			 		>
-				 	<TableCell component="th" scope="row">
+				 	<TableCell component="th" scope="row" style={{fontWeight: 900}}>
 					 {currency.rank}
 				 	</TableCell>
 					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
-					<TableCell style={{color: currency.change > 0? "green": "red"}}>${parseFloat(currency.price).toFixed(2)}</TableCell>
-					<TableCell style={{color: currency.change > 0? "green": "red"}}>{currency.change + "%"}</TableCell>
-					<TableCell>${millify(currency.marketCap)}</TableCell>
-					<TableCell>${millify(currency.volume)}</TableCell>
-					<TableCell>{currency.totalSupply? millify(currency.totalSupply): "-"}</TableCell>
+					<TableCell style={{color: currency.change > 0? "green": "red", fontWeight: 600}}>${parseFloat(currency.price).toFixed(2)}</TableCell>
+					<TableCell style={{color: currency.change > 0? "green": "red", fontWeight: 600}}>{currency.change + "%"}</TableCell>
+					<TableCell style={{fontWeight: 600}}>${millify(currency.marketCap)}</TableCell>
+					<TableCell style={{fontWeight: 600}}>${millify(currency.volume)}</TableCell>
+					<TableCell style={{fontWeight: 600}}>{currency.totalSupply? millify(currency.totalSupply): "-"}</TableCell>
 					</TableRow>
 				)}
 			</TableBody>
