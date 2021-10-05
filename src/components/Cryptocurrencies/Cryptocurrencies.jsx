@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
-import { useGetCryptosQuery, useGetCryptoHistoryQuery } from '../../api/cryptoApi';
+import { useGetCryptosQuery } from '../../api/cryptoApi';
 
-import Loader from '../Loader';
+import Loader from '../HomePage/Loader';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -22,7 +22,6 @@ const Cryptocurrencies = ({ simplified }) => {
 	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 
-	//const { data: coinHistory, isLoading } = useGetCryptosQuery(1,6);
 	useEffect(() => {
 		if(cryptoList != null){
 			setCryptos(cryptoList?.data?.coins)

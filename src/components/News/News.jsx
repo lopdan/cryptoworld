@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Row, Col, Avatar, Card } from 'antd'
 import moment from 'moment';
-import Loader from '../Loader';
+import Loader from '../HomePage/Loader';
 import styles from './News.module.css'
 
 import { useGetCryptoNewsQuery } from '../../api/cryptoNewsApi';

@@ -8,7 +8,7 @@ import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCi
 import './CoinData.scss';
 
 import { useGetCoinDataQuery, useGetCryptoHistoryQuery } from '../../api/cryptoApi';
-import Loader from './../Loader';
+import Loader from '../HomePage/Loader';
 import Chart from './../Chart/Chart';
 
 
