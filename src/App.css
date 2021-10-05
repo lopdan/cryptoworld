@@ -13,10 +13,6 @@
     box-sizing: border-box;
 }
 
-a:hover{
-    color: var(--pink) !important;
-}
-
 .app{
     width: 100%;
     align-self: center;

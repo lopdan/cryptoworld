@@ -44,12 +44,15 @@
     margin: 0;
 }
 
+a:hover{
+    color: black !important;
+}
+
 .nav-links:hover {
-    background-color: #3946f7;
     border-radius: 4px;
     transition: all 0.2s ease-out;
 
-    a {
+    a { 
         font-size: 32px;
     }
 }

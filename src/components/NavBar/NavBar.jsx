@@ -12,17 +12,17 @@ const NavBar = () => {
             </div>
             <div className='nav-menu'>
                 <div className='nav-links'>
-                    <nav className="nav-text">
+                    <nav>
                         <a className="nav-text" href="/">Home</a>
                     </nav>
                 </div>
                 <div className='nav-links'>
-                    <nav className="nav-text">
+                    <nav>
                         <a className="nav-text" href="/cryptocurrencies">Cryptocurrencies</a>
                     </nav>
                 </div>
                 <div className='nav-links'>
-                    <nav className="nav-text">
+                    <nav>
                         <a className="nav-text" href="/exchanges">Exchanges</a>
                     </nav>
                 </div>
