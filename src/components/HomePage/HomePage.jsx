@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useGetCryptosQuery } from '../../api/cryptoApi';
 import { Cryptocurrencies, News } from '..';
 import Loader from './Loader';
+import PieChart from '../PieChart/PieChart';
 
 import './HomePage.scss';
 
@@ -14,19 +15,22 @@ const HomePage = () => {
 	const { data, isFetching } = useGetCryptosQuery(20);
 	const globalStats = data?.data.stats;
 
+
+	console.log(data);
 	if(isFetching) return <Loader/>;
 
 	return(
 		<>
 			<div className="home-heading-container">
-				<Title level={2} className="heading">Global Crypto Stats</Title>
-				<Row>
-					<Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total}/></Col>
-					<Col span={12}><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)}/></Col>
-					<Col span={12}><Statistic title="Total Market Cap ($)" value={millify(globalStats.totalMarketCap)}/></Col>
-					<Col span={12}><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
-					<Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Col>
+				<Title level={2}>Global Crypto Stats</Title>
+				<Row className="home-general-stats">
+					<Col><Statistic title="Total Cryptocurrencies" value={globalStats.total}/></Col>
+					<Col><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)}/></Col>
+					<Col><Statistic title="Total Market Cap ($)" value={millify(globalStats.totalMarketCap)}/></Col>
+					<Col><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
+					<Col><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Col>
 				</Row>
+				<PieChart/>
 			</div>
 			<Cryptocurrencies simplified />
 			<div className="home-heading-container">

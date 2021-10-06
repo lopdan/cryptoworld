@@ -17,3 +17,12 @@
     font-size: 1.3rem !important;
     padding-top: 20px;
 }
+
+.home-general-stats{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: '2%';
+    width: '100%';
+    justify-content: space-between;
+}

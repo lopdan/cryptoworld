@@ -7,3 +7,4 @@ export { default as NewsPage } from './News/NewsPage';
 export { default as CoinData } from './CoinData/CoinData';
 export { default as Chart } from './Chart/Chart'; 
 export { default as Exchanges } from './Exchanges/Exchanges';
+export { default as PieChart } from './PieChart/PieChart';
