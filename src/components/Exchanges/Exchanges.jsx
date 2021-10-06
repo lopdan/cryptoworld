@@ -31,10 +31,10 @@ const Exchanges = () => {
     <div className="exchange-table-container">
       <Row>
         <Row style={{ width: '100%'}}>
-          <Col span={9} style={{fontWeight: 500, fontSize: '24px', marginLeft: '0%'}}>Exchanges</Col>
+          <Col span={9} style={{fontWeight: 500, fontSize: '24px'}}>Exchanges</Col>
           <Col span={5} style={{fontWeight: 500, fontSize: '24px', marginLeft: '-2%'}}>24h Trade Volume</Col>
-          <Col span={5} style={{fontWeight: 500, fontSize: '24px', marginLeft: '0%'}}>Markets</Col>
-          <Col span={5} style={{fontWeight: 500, fontSize: '24px', marginLeft: '0%'}}>Change</Col>
+          <Col span={5} style={{fontWeight: 500, fontSize: '24px'}}>Markets</Col>
+          <Col span={5} style={{fontWeight: 500, fontSize: '24px'}}>Change</Col>
         </Row>
         {exchangesList.map((exchange) => (
           <Col span={24}>
