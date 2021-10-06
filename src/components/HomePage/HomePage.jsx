@@ -21,16 +21,20 @@ const HomePage = () => {
 
 	return(
 		<>
-			<div className="home-heading-container">
-				<Title level={2}>Global Crypto Stats</Title>
-				<Row className="home-general-stats">
-					<Col><Statistic title="Total Cryptocurrencies" value={globalStats.total}/></Col>
-					<Col><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)}/></Col>
-					<Col><Statistic title="Total Market Cap ($)" value={millify(globalStats.totalMarketCap)}/></Col>
-					<Col><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
-					<Col><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Col>
-				</Row>
-				<PieChart/>
+			<div className="home-chart-header">
+				<div>
+					<Title level={2} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Global Crypto Stats</Title>
+					<Row style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20 }}>
+						<Col><Statistic title="Total Cryptocurrencies" value={globalStats.total}/></Col>
+						<Col><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)}/></Col>
+						<Col><Statistic title="Total Market Cap ($)" value={millify(globalStats.totalMarketCap)}/></Col>
+						<Col><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
+						<Col><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Col>
+					</Row>
+				</div>
+				<div>
+					<PieChart/>
+				</div>
 			</div>
 			<Cryptocurrencies simplified />
 			<div className="home-heading-container">
