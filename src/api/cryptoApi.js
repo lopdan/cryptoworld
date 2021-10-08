@@ -22,7 +22,7 @@ export const cryptoApi = createApi({
     }),
     getExchanges: builder.query({
       query: () => createRequest('/exchanges'),
-    }),
+    })
   })
 })
 

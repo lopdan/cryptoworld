@@ -27,7 +27,7 @@ const PieChart = () => {
 							pieValue={(data) => data.marketCap}
 							outerRadius={half}
 							innerRadius={({ data }) => {
-								const size = active && active.symbol == data.symbol ? 12 : 8;
+								const size = active && active.symbol == data.symbol ? 16 : 8;
 									return half - size;
 							}}
 							padAngle={0.01}

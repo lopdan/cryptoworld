@@ -17,6 +17,7 @@ RUN npm install react-scripts@4.0.3 -g --silent
 RUN npm install @ant-design/icons @mui/material @emotion/react @emotion/styled 
 RUN npm install @reduxjs/toolkit millify antd @antd-design/icons react-redux axios chart.js html-react-parser moment react-chartjs-2 react-router-dom html-react-parser
 RUN npm i @visx/shape @visx/text
+RUN npm i axios cors
 RUN npm install dotenv eslint slint-config-airbnb
 RUN npm install --save @visx/group
 
