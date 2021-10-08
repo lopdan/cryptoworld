@@ -23,6 +23,7 @@ const Cryptocurrencies = ({ simplified }) => {
 	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
 	const [timeperiod, setTimeperiod] = useState('7d');
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
+	const [ coinList, setCoinList] = useState();
 
 	useEffect(() => {
 		if(cryptoList != null){
@@ -38,21 +39,34 @@ const Cryptocurrencies = ({ simplified }) => {
 			'Accept':'application/json'
 		}
 	};
-	
-	axios.request(options).then(function (response) {
-		console.log(response.data);
-	}).catch(function (error) {
-		console.error(error);
-	});
-	//fetchData();
+	useEffect(() => {
+		axios.request(options).then(function (response) {
+			if(response.data != null) {
+				setCoinList({
+					coinList: response.data.data
+				})
+			}
+		}).catch(function (error) {
+			console.error(error);
+		});
+	},[])
+	console.log(coinList);
 
 	//Returns 7-day price change for price coloring
-	function getWeeklyData(id){
+	async function getWeeklyData(id){
 		const coinId = id;
-		var historyData = useGetCryptoHistoryQuery({coinId, timeperiod});
+		var historyData = await useGetCryptoHistoryQuery({coinId, timeperiod});
 		if(historyData.data != null && historyData.isSuccess)
 		{
 			return historyData.data.data.change;
+		}
+	}
+	//Returns de ID from CoinMarketCap API
+	function searchIDFromCoin(symbol){
+		if(coinList != null){
+			for(var i = 0; i < Object.keys(coinList.coinList).length; i++){
+				if(coinList.coinList[i].symbol == symbol) return coinList.coinList[i].id;
+			}
 		}
 	}
 
@@ -91,7 +105,7 @@ const Cryptocurrencies = ({ simplified }) => {
 					<TableCell style={{fontWeight: 600}}>${millify(currency.volume)}</TableCell>
 					<TableCell style={{fontWeight: 600}}>{currency.totalSupply? millify(currency.totalSupply): "-"}</TableCell>
 					<TableCell style={{fontWeight: 600, width: '10%'}}><img src={process.env.REACT_APP_COINMARKETCAP_IMG_CHART_URL + '10791.svg'} 
-						class={getWeeklyData('2') < 0 ? "crypto-chart-negative" : "crypto-chart-positive"}/></TableCell>
+						class={getWeeklyData(searchIDFromCoin(currency.symbol)) < 0 ? "crypto-chart-negative" : "crypto-chart-positive"}/></TableCell>
 					</TableRow>,
 				)}
 			</TableBody>
