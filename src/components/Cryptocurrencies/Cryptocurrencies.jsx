@@ -20,12 +20,12 @@ const { Title } = Typography;
 
 const Cryptocurrencies = ({ simplified }) => {
 	const amount = simplified ? 20 : 100;
-	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
-	const [ timeperiod, setTimeperiod] = useState('7d');
+	const { data: cryptoList, isFetching } = useGetCryptosQuery(100);
 	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 	const [ coinList, setCoinList] = useState();
 	const [ coinMetaData, setCoinMetaData] = useState();
 
+	console.log(cryptos);
 
 	useEffect(() => {
 		if(cryptoList != null){
@@ -111,7 +111,7 @@ const Cryptocurrencies = ({ simplified }) => {
           </TableRow>
         </TableHead>
 			<TableBody>	
-				{coinList?.coinList?.map((currency) =>
+				{coinList?.coinList?.slice(0, amount).map((currency) =>
 				 	<TableRow
 				 	key={cryptos.name}
 				 	sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -119,7 +119,7 @@ const Cryptocurrencies = ({ simplified }) => {
 				 	<TableCell component="th" scope="row" style={{fontWeight: 900}}>
 					 {currency.cmc_rank}
 				 	</TableCell>
-					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={getLogoCoin(currency.id)} height='30px' /> {currency.name}</Link></TableCell>
+					<TableCell><Link key={searchIDFromCoin(currency.symbol)} to={`crypto/${searchIDFromCoin(currency.symbol)}`}><img className="crypto-image" src={getLogoCoin(currency.id)} height='30px' /> {currency.name}</Link></TableCell>
 					<TableCell style={{color: currency.quote.USD.percent_change_24h > 0? "green": "red", fontWeight: 600}}>${parseFloat(currency.quote.USD.price).toFixed(2)}</TableCell>
 					<TableCell style={{color: currency.quote.USD.percent_change_24h > 0? "green": "red", fontWeight: 600}}>{parseFloat(currency.quote.USD.percent_change_24h).toFixed(2) + "%"}</TableCell>
 					<TableCell style={{fontWeight: 600}}>${millify(currency.quote.USD.market_cap)}</TableCell>
