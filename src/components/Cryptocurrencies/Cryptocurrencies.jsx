@@ -22,8 +22,10 @@ const Cryptocurrencies = ({ simplified }) => {
 	const amount = simplified ? 20 : 100;
 	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
 	const [timeperiod, setTimeperiod] = useState('7d');
-	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
+	//const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 	const [ coinList, setCoinList] = useState();
+	const [ cryptos, setCryptos] = useState(coinList?.coinList);
+
 
 	useEffect(() => {
 		if(cryptoList != null){
@@ -31,15 +33,15 @@ const Cryptocurrencies = ({ simplified }) => {
 		}
 	},[cryptoList])
 
-	const options = {
-		method: 'GET',
-		url: process.env.REACT_APP_COINMARKETCAP_API_CRYPTO_URL,
-		headers: {
-			'X-CMC_PRO_API_KEY': process.env.REACT_APP_COINMARKETCAP_API_KEY,
-			'Accept':'application/json'
-		}
-	};
 	useEffect(() => {
+		const options = {
+			method: 'GET',
+			url: process.env.REACT_APP_COINMARKETCAP_API_CRYPTO_URL,
+			headers: {
+				'X-CMC_PRO_API_KEY': process.env.REACT_APP_COINMARKETCAP_API_KEY,
+				'Accept':'application/json'
+			}
+		};
 		axios.request(options).then(function (response) {
 			if(response.data != null) {
 				setCoinList({
@@ -50,26 +52,25 @@ const Cryptocurrencies = ({ simplified }) => {
 			console.error(error);
 		});
 	},[])
-	console.log(coinList);
 
-	//Returns 7-day price change for price coloring
-	async function getWeeklyData(id){
-		const coinId = id;
-		var historyData = await useGetCryptoHistoryQuery({coinId, timeperiod});
-		if(historyData.data != null && historyData.isSuccess)
-		{
-			return historyData.data.data.change;
-		}
-	}
 	//Returns de ID from CoinMarketCap API
-	function searchIDFromCoin(symbol){
+	function searchIDFromCoin(symbol, name){
 		if(coinList != null){
 			for(var i = 0; i < Object.keys(coinList.coinList).length; i++){
-				if(coinList.coinList[i].symbol == symbol) return coinList.coinList[i].id;
+				if(coinList.coinList[i].symbol == symbol && coinList.coinList[i].name == name) return coinList.coinList[i].id;
 			}
 		}
 	}
 
+	function getWeeklyChange(symbol, name){
+		if(coinList != null){
+			for(var i = 0; i < Object.keys(coinList.coinList).length; i++){
+				if(coinList.coinList[i].symbol == symbol && coinList.coinList[i].name == name) return coinList.coinList[i].quote.USD.percent_change_7d;
+			}
+		}
+	}
+
+	console.log(coinList);
 	if(isFetching) return <Loader/>
 	return (
     <>
@@ -86,26 +87,26 @@ const Cryptocurrencies = ({ simplified }) => {
             <TableCell style={{fontWeight: 900}}>Market Cap</TableCell>
 						<TableCell style={{fontWeight: 900}}>Volume</TableCell>
 						<TableCell style={{fontWeight: 900}}>Total Supply</TableCell>
-						<TableCell>Last 7 days</TableCell>
+						<TableCell style={{fontWeight: 900}}>Last 7 days</TableCell>
           </TableRow>
         </TableHead>
 			<TableBody>	
-				{cryptos?.map((currency) =>
+				{coinList?.coinList?.map((currency) =>
 				 	<TableRow
 				 	key={cryptos.name}
 				 	sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 			 		>
 				 	<TableCell component="th" scope="row" style={{fontWeight: 900}}>
-					 {currency.rank}
+					 {currency.cmc_rank}
 				 	</TableCell>
 					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
-					<TableCell style={{color: currency.change > 0? "green": "red", fontWeight: 600}}>${parseFloat(currency.price).toFixed(2)}</TableCell>
-					<TableCell style={{color: currency.change > 0? "green": "red", fontWeight: 600}}>{currency.change + "%"}</TableCell>
-					<TableCell style={{fontWeight: 600}}>${millify(currency.marketCap)}</TableCell>
-					<TableCell style={{fontWeight: 600}}>${millify(currency.volume)}</TableCell>
-					<TableCell style={{fontWeight: 600}}>{currency.totalSupply? millify(currency.totalSupply): "-"}</TableCell>
-					<TableCell style={{fontWeight: 600, width: '10%'}}><img src={process.env.REACT_APP_COINMARKETCAP_IMG_CHART_URL + '10791.svg'} 
-						class={getWeeklyData(searchIDFromCoin(currency.symbol)) < 0 ? "crypto-chart-negative" : "crypto-chart-positive"}/></TableCell>
+					<TableCell style={{color: currency.quote.USD.percent_change_24h > 0? "green": "red", fontWeight: 600}}>${parseFloat(currency.quote.USD.price).toFixed(2)}</TableCell>
+					<TableCell style={{color: currency.quote.USD.percent_change_24h > 0? "green": "red", fontWeight: 600}}>{parseFloat(currency.quote.USD.percent_change_24h).toFixed(2) + "%"}</TableCell>
+					<TableCell style={{fontWeight: 600}}>${millify(currency.quote.USD.market_cap)}</TableCell>
+					<TableCell style={{fontWeight: 600}}>${millify(currency.quote.USD.volume_24h)}</TableCell>
+					<TableCell style={{fontWeight: 600}}>{currency.circulating_supply? millify(currency.circulating_supply): "-"}</TableCell>
+					<TableCell style={{fontWeight: 600, width: '8%'}}><img src={process.env.REACT_APP_COINMARKETCAP_IMG_CHART_URL + currency.id + '.svg'} 
+						class={/*getWeeklyData(searchIDFromCoin(currency.symbol))*/currency.quote.USD.percent_change_7d < 0 ? "crypto-chart-negative" : "crypto-chart-positive"}/></TableCell>
 					</TableRow>,
 				)}
 			</TableBody>
