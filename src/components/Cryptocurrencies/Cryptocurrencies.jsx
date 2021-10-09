@@ -21,10 +21,10 @@ const { Title } = Typography;
 const Cryptocurrencies = ({ simplified }) => {
 	const amount = simplified ? 20 : 100;
 	const { data: cryptoList, isFetching } = useGetCryptosQuery(amount);
-	const [timeperiod, setTimeperiod] = useState('7d');
-	//const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
+	const [ timeperiod, setTimeperiod] = useState('7d');
+	const [ cryptos, setCryptos] = useState(cryptoList?.data?.coins);
 	const [ coinList, setCoinList] = useState();
-	const [ cryptos, setCryptos] = useState(coinList?.coinList);
+	const [ coinMetaData, setCoinMetaData] = useState();
 
 
 	useEffect(() => {
@@ -53,24 +53,44 @@ const Cryptocurrencies = ({ simplified }) => {
 		});
 	},[])
 
+	useEffect(() => {
+		const options= {
+			method: 'GET',
+			url: process.env.REACT_APP_COINMARKETCAP_API_METADATA,
+			headers: {
+				'X-CMC_PRO_API_KEY': process.env.REACT_APP_COINMARKETCAP_API_KEY,
+				'Accept':'application/json'
+			}
+		};
+		axios.request(options).then(function (response) {
+			if(response.data != null) {
+				setCoinMetaData({
+					coinMetaData: response.data.data
+				})
+			}
+		}).catch(function (error) {
+			console.error(error);
+		});
+	},[])
+
+	console.log(coinMetaData);
+
 	//Returns de ID from CoinMarketCap API
-	function searchIDFromCoin(symbol, name){
-		if(coinList != null){
-			for(var i = 0; i < Object.keys(coinList.coinList).length; i++){
-				if(coinList.coinList[i].symbol == symbol && coinList.coinList[i].name == name) return coinList.coinList[i].id;
+	function searchIDFromCoin(symbol){
+		if(cryptos != null){
+			for(var i = 0; i < Object.keys(cryptos).length; i++){
+				if(cryptos[i].symbol == symbol) return cryptos[i].id;
 			}
 		}
 	}
-
-	function getWeeklyChange(symbol, name){
-		if(coinList != null){
-			for(var i = 0; i < Object.keys(coinList.coinList).length; i++){
-				if(coinList.coinList[i].symbol == symbol && coinList.coinList[i].name == name) return coinList.coinList[i].quote.USD.percent_change_7d;
-			}
+	function getLogoCoin(id){
+		if(coinMetaData != null){
+			return coinMetaData.coinMetaData[id].logo;
 		}
 	}
 
 	console.log(coinList);
+	console.log(coinMetaData);
 	if(isFetching) return <Loader/>
 	return (
     <>
@@ -99,7 +119,7 @@ const Cryptocurrencies = ({ simplified }) => {
 				 	<TableCell component="th" scope="row" style={{fontWeight: 900}}>
 					 {currency.cmc_rank}
 				 	</TableCell>
-					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={currency.iconUrl} height='30px' /> {currency.name}</Link></TableCell>
+					<TableCell><Link key={currency.id} to={`crypto/${currency.id}`}><img className="crypto-image" src={getLogoCoin(currency.id)} height='30px' /> {currency.name}</Link></TableCell>
 					<TableCell style={{color: currency.quote.USD.percent_change_24h > 0? "green": "red", fontWeight: 600}}>${parseFloat(currency.quote.USD.price).toFixed(2)}</TableCell>
 					<TableCell style={{color: currency.quote.USD.percent_change_24h > 0? "green": "red", fontWeight: 600}}>{parseFloat(currency.quote.USD.percent_change_24h).toFixed(2) + "%"}</TableCell>
 					<TableCell style={{fontWeight: 600}}>${millify(currency.quote.USD.market_cap)}</TableCell>
