@@ -15,21 +15,9 @@ This application tracks the top cryptocurrencies, data and news using RapidAPI's
 
 ## Installation
 
-To install you can run the `Dockerfile` with `docker build .`. If you don't have Docker or want to do it manually you have to add all the dependencies with the following commands:
-```
-npm i react
-npm install -g sass
-npm install --save react-chartjs-2 chart.js
-npm install react-scripts@4.0.3 -g --silent
-npm install @ant-design/icons @mui/material @emotion/react @emotion/styled 
-npm install @reduxjs/toolkit millify antd react-redux axios chart.js html-react-parser moment react-chartjs-2 react-router-dom html-react-parser
-npm i @antd-design/icons
-npm i @visx/shape @visx/text
-npm i axios cors
-npm install dotenv eslint slint-config-airbnb
-npm install --save @visx/group
-npm install
-```
+Clone down this repository `git clone https://github.com/lopdan/cryptoworld`. You will need `node` and `npm` installed globally on your machine.
+
+To install run `npm install` in your terminal.
 
 After that you need to get your own API keys from [Coinranking](https://rapidapi.com/Coinranking/api/coinranking1), [Bing News Search APIs](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1/) and [CoinMarketCap's API](https://coinmarketcap.com/api/). Then you have to replace the [dotenv](https://www.npmjs.com/package/dotenv) variables (process.env....), with your own.
 
