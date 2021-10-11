@@ -16,7 +16,6 @@ const HomePage = () => {
 	const globalStats = data?.data.stats;
 
 	if(isFetching) return <Loader/>;
-
 	return(
 		<>
 			<div className="home-chart-header">
