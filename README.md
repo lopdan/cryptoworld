@@ -99,4 +99,18 @@ Then when everything is ready, to start the server `npm start`. To visit the app
 <h4 align="center">News Page</h4>
 <img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/News.png"/>
 
+## Language & Tools
 
+### HTML
+* [html-react-parser](https://www.npmjs.com/package/html-react-parser): Used to get the detailed information about each coin from the API
+### Javascript
+* [React](https://reactjs.org/): UI Development
+* [React Redux](https://react-redux.js.org/): State manager and data reducer.
+* [React-router-dom](https://www.npmjs.com/package/react-router-dom): Dynamic routing.
+* [Jest](https://www.npmjs.com/package/jest): Javascript testing.
+### CSS
+* Language to style a Web page
+### SCSS
+* CSS with variables, nesting and more
+### Docker
+* Package applications into containers
