@@ -1,5 +1,4 @@
 /** NEWS */
-
 .news_card_simplified{
     min-height: 300px !important;
 }
@@ -10,7 +9,7 @@
 }
 
 .news_title_simplified{
-    width: 65%;
+    width: 55%;
 }
 
 .news_container_simplified{

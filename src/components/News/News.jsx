@@ -10,18 +10,18 @@ const { Text, Title } = Typography;
 const noImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const News = ({ simplified }) => {
-	const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', amount: simplified ? 6 : 15})
+  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', amount: simplified ? 6 : 15})
 
 
-	if(!cryptoNews?.value) return <Loader/>
-	return (   
+  if(!cryptoNews?.value) return <Loader/>
+  return (   
     <Row gutter={[24, 24]}>
       {cryptoNews.value.map((news, i) => (
         <Col xs={24} sm={12} lg={8} key={i}>
           <Card hoverable className={styles.news_card_simplified}>
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className={styles.news_image_container_simplified}>
-                <Title className={styles.news_title_simplified} level={4}>{news.name}</Title>
+                <Title className={styles.news_title_simplified} level={4}>{news.name.length > 50 ? `${news.name.substring(0, 50)}...` : news.name}</Title>
                 <img src={news?.image?.thumbnail?.contentUrl || noImage} alt="" />
               </div>
               <p>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
@@ -37,7 +37,7 @@ const News = ({ simplified }) => {
         </Col>
       ))}
     </Row>
-	)
+  )
 }
 export default News;
 

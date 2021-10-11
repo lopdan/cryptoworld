@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import { Select, Typography, Row, Col, Avatar, Card } from 'antd'
+import { Typography, Row, Col, Card } from 'antd'
 import moment from 'moment';
 import Loader from '../HomePage/Loader';
 import styles from './News.module.css'
 
 import { useGetCryptoNewsQuery } from '../../api/cryptoNewsApi';
 import { useGetCryptosQuery } from '../../api/cryptoApi';
-import { padding } from '@mui/system';
 
 const { Text, Title } = Typography;
-const { Option } = Select;
 const noImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const NewsPage = () => {
-	const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data } = useGetCryptosQuery(100);
-	const { data: cryptoNews } = useGetCryptoNewsQuery({newsCategory: 'Cryptocurrency', amount: 15})
+  const { data: cryptoNews } = useGetCryptoNewsQuery({newsCategory: 'Cryptocurrency', amount: 15})
 
 
-	if(!cryptoNews?.value) return <Loader/>
+  if(!cryptoNews?.value) return <Loader/>
   {
     return (   
       <div className={styles.news}>
