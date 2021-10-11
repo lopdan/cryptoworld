@@ -1,8 +1,13 @@
 # pull official base image
 FROM node:13.12.0-alpine
-
+# install node
+RUN apk add --no-cache nodejs-current tini
 # set working directory
 WORKDIR /app
+# Set tini as entrypoint
+ENTRYPOINT ["/sbin/tini", "--"]
+# copy project file
+COPY package.json .
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
@@ -21,6 +26,12 @@ RUN npm i @visx/shape @visx/text
 RUN npm i axios cors
 RUN npm install dotenv eslint slint-config-airbnb
 RUN npm install --save @visx/group
+
+# install all node_modules
+RUN npm install
+
+# tests dependencies
+RUN npm i --save-dev enzyme enzyme-adapter-react-16
 
 # add app
 COPY . ./
