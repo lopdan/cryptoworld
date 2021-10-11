@@ -5,7 +5,7 @@ import HTMLReactParser from 'html-react-parser';
 
 import { useGetExchangesQuery } from '../../api/cryptoApi';
 import Loader from '../HomePage/Loader';
-import './Exchange.css';
+import './Exchanges.css';
 
 const { Text } = Typography;
 const { Panel } = Collapse;
