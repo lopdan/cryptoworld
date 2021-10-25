@@ -67,25 +67,25 @@ Then when everything is ready, to start the server `npm start`. To visit the app
 ## Project Images
 
 <h4 align="center">Home Page Header</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/HomeHeader.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/HomeHeader.png"/>
 
 <h4 align="center">Home Page News Section</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/HomeBottom.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/HomeBottom.png"/>
 
 <h4 align="center">Cryptocurrencies</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/Cryptocurrencies.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/Cryptocurrencies.png"/>
 
 <h4 align="center">Coin Details Chart</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/Chart.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/Chart.png"/>
 
 <h4 align="center">Coin Details About</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/CoinData.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/CoinData.png"/>
 
 <h4 align="center">Exchanges</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/Exchanges.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/Exchanges.png"/>
 
 <h4 align="center">News Page</h4>
-<img src="https://github.com/lopdan/cryptoworld/blob/main/src/images/News.png"/>
+<img src="https://github.com/lopdan/cryptoworld/blob/master/src/images/News.png"/>
 
 ## Language & Tools
 
