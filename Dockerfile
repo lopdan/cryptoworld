@@ -16,14 +16,14 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 
+# Change from root before installing dependencies
+USER node
+
 # install all node_modules
 RUN npm install
 
-# tests dependencies
-RUN npm i --save-dev enzyme enzyme-adapter-react-16
-
 # add app
-COPY . ./
+COPY --chown=node:node . .
 
 # start app
 CMD ["npm", "start"]
