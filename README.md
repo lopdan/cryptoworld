@@ -21,27 +21,37 @@ To install run `npm install` in your terminal.
 
 After that you need to get your own API keys from [Coinranking](https://rapidapi.com/Coinranking/api/coinranking1), [Bing News Search APIs](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1/) and [CoinMarketCap's API](https://coinmarketcap.com/api/). Then you have to replace the [dotenv](https://www.npmjs.com/package/dotenv) variables (process.env....), with your own.
 
-The first one to change is [Coinranking](https://rapidapi.com/Coinranking/api/coinranking1)'s key and host from [cryptoApi](https://github.com/lopdan/cryptoworld/blob/main/src/api/cryptoApi.js), in the lines 3 to 6. You have to swap the `x-rapidapi-key` value with the one you got from the API. Also you have to create a variable called baseUrl with the API url(shown below).
-```javascript
-const cryptoApiHeaders = {
-  'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-  'x-rapidapi-key': YOUR OWN KEY
-}
+You can do it replacing them in the code or creating your own [dotenv](https://www.npmjs.com/package/dotenv) file. The faster way will be with the .env file:
+
 ```
-```javascript
-const baseUrl = 'https://coinranking1.p.rapidapi.com';
+REACT_APP_RAPIDAPI_KEY = 'YOUR OWN COINRANKING'S API KEY'
+REACT_APP_CRYPTO_RAPIDAPI_HOST ='coinranking1.p.rapidapi.com'
+REACT_APP_CRYPTO_API_URL = 'https://coinranking1.p.rapidapi.com'
+REACT_APP_NEWS_API_URL = 'https://bing-news-search1.p.rapidapi.com'
+REACT_APP_NEWS_RAPIDAPI_HOST = 'bing-news-search1.p.rapidapi.com'
+REACT_APP_COINMARKETCAP_IMG_CHART_URL = 'https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/'
+
+REACT_APP_COINMARKETCAP_API_CRYPTO_URL = 'https://cors.bridged.cc/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?sort=market_cap&limit=100'
+REACT_APP_COINMARKETCAP_API_METADATA = 'https://cors.bridged.cc/https://pro-api.coinmarketcap.com/v1/cryptocurrency/info'
+REACT_APP_COINMARKETCAP_API_KEY = 'YOUR OWN COINMARKETCAP'S API KEY'
+ 
+ESLINT_NO_DEV_ERRORS=true
 ```
 
-The second one to change is [Bing News Search APIs](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1/)'s key and url from [cryptoNewsApi](https://github.com/lopdan/cryptoworld/blob/main/src/api/cryptoNewsApi.js), in the lines 3 to 7. You have to swap the `x-rapidapi-key` value with the one you got from the API. Also you have to create a variable called baseUrl with the API url(shown below).
+The first one to change is [Coinranking](https://rapidapi.com/Coinranking/api/coinranking1)'s key and host from [cryptoApi](https://github.com/lopdan/cryptoworld/blob/main/src/api/cryptoApi.js), in the lines 3 to 6. It represents the variable `x-rapidapi-key` value.
+```javascript
+const cryptoApiHeaders = {
+  'x-rapidapi-host': process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
+  'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
+}
+```
+The second one to change is [Bing News Search APIs](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/bing-news-search1/)'s key and url from [cryptoNewsApi](https://github.com/lopdan/cryptoworld/blob/main/src/api/cryptoNewsApi.js), in the lines 3 to 7. It represents `x-rapidapi-key` value.
 ```javascript
 const cryptoNewsApiHeaders = {
     'x-bingapis-sdk': 'true',
-    'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',
-    'x-rapidapi-key': YOUR OWN KEY
+    'x-rapidapi-host': process.env.REACT_APP_NEWS_RAPIDAPI_HOST,
+    'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
 }
-```
-```javascript
-const baseUrl = 'https://bing-news-search1.p.rapidapi.com';
 ```
 
 Finally you have to change [CoinMarketCap's API](https://coinmarketcap.com/api/) keys from [Cryptocurrencies](https://github.com/lopdan/cryptoworld/blob/main/src/components/Cryptocurrencies/Cryptocurrencies.jsx) in each `useEffect`.
